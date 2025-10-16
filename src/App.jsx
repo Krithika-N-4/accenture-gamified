@@ -65,7 +65,7 @@ const MathPuzzle = () => {
     { expression: '8*3', value: 24 }
   ]
   ];
-
+  
   useEffect(() => {
     if (gameState === 'playing' && timeLeft > 0) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
@@ -85,6 +85,7 @@ const MathPuzzle = () => {
   };
 
   const handleBubbleClick = (index) => {
+    // If bubble is already selected, unselect it
     if (selectedBubbles.includes(index)) {
       const newSelected = selectedBubbles.filter(i => i !== index);
       const newClickedOrder = clickedOrder.filter(i => i !== index);
@@ -152,8 +153,8 @@ const MathPuzzle = () => {
         <div className="text-center">
           <div className="flex items-center justify-center gap-8 mb-12">
             <div>
-              <div className="text-gray-800 text-5xl font-light mb-10">ACCENTURE</div>
-              <div className="text-4xl font-bold text-gray-900">Math Puzzle</div>
+              <div className="text-gray-800 text-5xl font-light mb-10 mr-4">ACCENTURE</div>
+              <div className="text-4xl font-bold text-gray-900 mr-4">Math Puzzle</div>
             </div>
             <div className="w-64 h-64 bg-gray-700 rounded-lg p-8 flex items-center justify-center">
               <div className="text-white text-6xl font-bold opacity-60">
@@ -188,7 +189,7 @@ const MathPuzzle = () => {
             <button
               onClick={() => setGameState('start')}
               className="bg-white text-gray-800 px-12 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors shadow-lg cursor-pointer"
-            >
+              >
               Home
             </button>
             <button
@@ -205,6 +206,12 @@ const MathPuzzle = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-200 via-blue-200 to-pink-200 p-8">
+      <button
+        onClick={() => setGameState('start')}
+        className="absolute top-8 left-8 bg-white text-gray-800 px-12 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors shadow-lg cursor-pointer"
+      >
+        Home
+      </button>
       <div className="max-w-2xl mx-auto">
         <div className="mb-8">
           <div className="text-4xl font-light text-gray-800 mb-6">Q{currentQuestion + 1}</div>
